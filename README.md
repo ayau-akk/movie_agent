@@ -1,18 +1,18 @@
-# AI-агент «Киноманьяк»
+# ‘Film Buff’ AI Agent
 
-## Описание проекта
+## Project Description
 
-AI-агент «Киноманьяк» — это локальный агент на базе Ollama и LangChain, который отвечает на вопросы о фильмах.
+The ‘Film Buff’ AI Agent is a local agent built on Ollama and LangChain that answers questions about films.
 
-Агент использует OMDb API для получения информации о фильмах. Он умеет искать фильмы, показывать рейтинг, получать сюжет, сравнивать фильмы и помнить контекст диалога.
+The agent uses the OMDb API to retrieve information about films. It can search for films, display ratings, retrieve plot summaries, compare films and remember the context of the conversation.
 
-## Выбранный вариант
+## Selected option
 
-Вариант 2: Локальная модель + LangChain.
+Option 2: Local model + LangChain.
 
-Коэффициент варианта: 1.1
+Option weighting: 1.1
 
-## Стек
+## Stack
 
 - Python 3.11.4
 - LangChain
@@ -24,131 +24,46 @@ AI-агент «Киноманьяк» — это локальный агент 
 - requests
 - python-dotenv
 
-## Возможности агента
+## Agent capabilities
 
-Агент умеет:
+The agent can:
 
-1. Искать фильм по названию
-2. Искать список фильмов по ключевому слову
-3. Получать полный сюжет фильма
-4. Получать рейтинг фильма
-5. Запоминать имя пользователя
-6. Запоминать предпочтения пользователя
-7. Вызывать несколько инструментов для сложных запросов
-8. Показывать reasoning через verbose-режим LangChain
+1. Search for a film by title
+2. Search for a list of films by keyword
+3. Retrieve the full film synopsis
+4. Retrieve the film’s rating
+5. Remember the user’s name
+6. Remember the user’s preferences
+7. Call upon multiple tools for complex queries
+8. Display reasoning via LangChain’s verbose mode
 
-## Реализованные tools
+## Implemented tools
 
-В проекте реализованы 4 инструмента:
+The project implements 4 tools:
 
-1. search_movie_by_title — поиск фильма по названию
-2. search_movies_list — поиск списка фильмов
-3. get_full_movie_plot — получение полного сюжета
-4. get_movie_rating — получение рейтинга IMDB
+1. search_movie_by_title — search for a film by title
+2. search_movies_list — search for a list of films
+3. get_full_movie_plot — retrieve the full plot
+4. get_movie_rating — retrieve the IMDB rating
 
 ## Memory
 
-В проекте используется ConversationBufferMemory.
+The project uses ConversationBufferMemory.
 
-Память позволяет агенту запоминать:
+The memory allows the agent to remember:
 
-- имя пользователя
-- любимые фильмы
-- любимые жанры
-- любимых режиссёров
-- контекст предыдущих сообщений
+- the user’s name
+- favourite films
+- favourite genres
+- favourite directors
+- the context of previous messages
 
-Пример:
+Example:
 
-Пользователь: Меня зовут Асель  
-Агент: Я запомню, что тебя зовут Асель.
+User: My name is Asel  
+Agent: I’ll remember that your name is Asel.
 
-Пользователь: Как меня зовут?  
-Агент: Тебя зовут Асель.
+User: What’s my name?  
+Agent: Your name is
 
-## Multi-tool calling
-
-Агент может использовать несколько инструментов последовательно.
-
-Пример запроса:
-
-Сравни Inception и The Matrix
-
-Логика:
-
-1. Агент получает информацию о фильме Inception
-2. Агент получает информацию о фильме The Matrix
-3. Агент сравнивает рейтинг, жанры, режиссёров и общий стиль
-4. Агент делает вывод для пользователя
-
-## Reasoning
-
-В проекте включён параметр verbose=True.
-
-Благодаря этому в терминале видно, какой инструмент вызывает агент.
-
-Пример:
-
-Entering new AgentExecutor chain...
-Invoking: get_movie_rating with {'title': 'Inception'}
-Finished chain.
-
-## Установка
-
-Создать виртуальное окружение:
-
-python3 -m venv venv
-source venv/bin/activate
-
-Установить зависимости:
-
-pip install -r requirements.txt
-
-Скачать модель Ollama:
-
-ollama pull qwen2.5:7b
-
-## Настройка
-
-Создать файл .env:
-
-OMDB_API_KEY=your_omdb_api_key
-OLLAMA_MODEL=qwen2.5:7b
-
-Настоящий .env не нужно загружать в GitHub.
-
-## Запуск
-
-python3 agent.py
-
-## Примеры запросов
-
-Расскажи про фильм Inception
-
-Какой рейтинг у The Matrix?
-
-Найди фильмы про Batman
-
-Дай полный сюжет фильма Interstellar
-
-Сравни Inception и The Matrix
-
-Меня зовут Асель
-
-Я люблю фильмы Нолана и жанр триллер
-
-Что я люблю?
-
-## Структура проекта
-
-movie-agent/
-├── .env.example
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── tools.py
-└── agent.py
-
-## Важно
-
-Файл .env не загружается в GitHub, потому что там хранится настоящий API ключ.
+Translated with DeepL.com (free version)
